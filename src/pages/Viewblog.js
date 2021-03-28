@@ -14,19 +14,22 @@ function Viewblog(){
             return response.json();
         }).then(data=>{
 
-            setIsLoading(false)
+            
             const newblogs = []
             for(const key in data){
                 const newblog = {
                     id:key,
-                    ...data
+                    ...data[key]
                 }
                 newblogs.push(newblog)
+                
             
             }
-
-
+            setIsLoading(false)
             setLoadedData(newblogs)
+
+
+            
     })
 
     },[])
